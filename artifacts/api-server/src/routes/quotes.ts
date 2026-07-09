@@ -74,7 +74,7 @@ router.post("/quotes", async (req, res) => {
       photoUrl?: string;
     };
 
-    if (!name || !phone || !email || !address || !jobDescription || !preferredContact) {
+    if (!name || !phone || !address || !jobDescription || !preferredContact) {
       res.status(400).json({ error: "All required fields must be provided" });
       return;
     }
