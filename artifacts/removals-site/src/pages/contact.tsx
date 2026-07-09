@@ -51,7 +51,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-bold text-foreground">Facebook</h3>
                     <a
-                      href="https://www.facebook.com/DBRemovals"
+                      href="https://www.facebook.com/share/193veY3mhT/?mibextid=wwXIfr"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-lg text-primary font-medium mt-1 block hover:text-accent transition-colors"
@@ -84,7 +84,7 @@ export default function Contact() {
                   </a>
                 </Button>
                 <Button variant="outline" className="w-full rounded-full" asChild>
-                  <a href="https://www.facebook.com/DBRemovals" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.facebook.com/share/193veY3mhT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
                     <Facebook className="w-4 h-4 mr-2" /> Message on Facebook
                   </a>
                 </Button>

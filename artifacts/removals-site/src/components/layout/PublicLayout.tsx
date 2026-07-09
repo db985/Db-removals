@@ -30,7 +30,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
             <Phone className="w-4 h-4 text-accent" />
             <span>07711 961 375</span>
           </a>
-          <a href="https://www.facebook.com/DBRemovals" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
+          <a href="https://www.facebook.com/share/193veY3mhT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
             <Facebook className="w-4 h-4 text-accent" />
             <span>Message us on Facebook</span>
           </a>
@@ -102,7 +102,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
               <a href="tel:07711961375" className="flex items-center gap-3 hover:text-primary transition-colors">
                 <Phone className="w-5 h-5 text-primary" /> 07711 961 375
               </a>
-              <a href="https://www.facebook.com/DBRemovals" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-primary transition-colors">
+              <a href="https://www.facebook.com/share/193veY3mhT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-primary transition-colors">
                 <Facebook className="w-5 h-5 text-primary" /> Message us on Facebook
               </a>
             </div>
@@ -129,7 +129,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
                 DB &amp; Family Man and a Van. Fully licensed, affordable, and reliable removals, clearances, and more across Woolavington and the surrounding areas.
               </p>
               <a
-                href="https://www.facebook.com/DBRemovals"
+                href="https://www.facebook.com/share/193veY3mhT/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-white transition-colors"
@@ -173,7 +173,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
                 </li>
                 <li className="flex items-start gap-3">
                   <Facebook className="w-5 h-5 text-accent shrink-0" />
-                  <a href="https://www.facebook.com/DBRemovals" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  <a href="https://www.facebook.com/share/193veY3mhT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                     Message DB Removals<br /><span className="text-xs opacity-70">on Facebook</span>
                   </a>
                 </li>
