@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import { Menu, X, Phone, Mail, MapPin, Facebook } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export function PublicLayout({ children }: { children: ReactNode }) {
@@ -26,18 +26,18 @@ export function PublicLayout({ children }: { children: ReactNode }) {
       {/* Top Bar */}
       <div className="bg-primary text-primary-foreground py-2 px-4 md:px-8 text-sm hidden md:flex justify-between items-center z-50 relative">
         <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2">
+          <a href="tel:07711961375" className="flex items-center gap-2 hover:text-accent transition-colors">
             <Phone className="w-4 h-4 text-accent" />
-            <span>0800 123 4567</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Mail className="w-4 h-4 text-accent" />
-            <span>hello@yourcompany.co.uk</span>
-          </div>
+            <span>07711 961 375</span>
+          </a>
+          <a href="https://www.facebook.com/DBRemovals" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
+            <Facebook className="w-4 h-4 text-accent" />
+            <span>Message us on Facebook</span>
+          </a>
         </div>
         <div className="flex items-center gap-2">
           <MapPin className="w-4 h-4 text-accent" />
-          <span>Serving London & Surrounding Areas</span>
+          <span>Woolavington &amp; Surrounding Areas</span>
         </div>
       </div>
 
@@ -52,11 +52,11 @@ export function PublicLayout({ children }: { children: ReactNode }) {
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl tracking-tighter">
-              YC
+              DB
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-xl leading-none text-primary tracking-tight">YOUR COMPANY</span>
-              <span className="text-xs text-muted-foreground font-medium tracking-wider uppercase">Removals & Clearance</span>
+              <span className="font-bold text-xl leading-none text-primary tracking-tight">DB Removals</span>
+              <span className="text-xs text-muted-foreground font-medium tracking-wider uppercase">DB &amp; Family Man and a Van</span>
             </div>
           </Link>
 
@@ -99,8 +99,12 @@ export function PublicLayout({ children }: { children: ReactNode }) {
               <Link href="/quote">Get a Free Quote</Link>
             </Button>
             <div className="mt-8 flex flex-col gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-3"><Phone className="w-5 h-5 text-primary" /> 0800 123 4567</div>
-              <div className="flex items-center gap-3"><Mail className="w-5 h-5 text-primary" /> hello@yourcompany.co.uk</div>
+              <a href="tel:07711961375" className="flex items-center gap-3 hover:text-primary transition-colors">
+                <Phone className="w-5 h-5 text-primary" /> 07711 961 375
+              </a>
+              <a href="https://www.facebook.com/DBRemovals" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-primary transition-colors">
+                <Facebook className="w-5 h-5 text-primary" /> Message us on Facebook
+              </a>
             </div>
           </div>
         </div>
@@ -117,24 +121,33 @@ export function PublicLayout({ children }: { children: ReactNode }) {
             <div>
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-8 h-8 bg-white text-primary rounded flex items-center justify-center font-bold text-lg">
-                  YC
+                  DB
                 </div>
-                <span className="font-bold text-xl tracking-tight">YOUR COMPANY</span>
+                <span className="font-bold text-xl tracking-tight">DB Removals</span>
               </div>
               <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6">
-                Premium, fully insured local removals and clearance services. We take the stress out of moving day with professional, careful, and friendly service.
+                DB &amp; Family Man and a Van. Fully licensed, affordable, and reliable removals, clearances, and more across Woolavington and the surrounding areas.
               </p>
+              <a
+                href="https://www.facebook.com/DBRemovals"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-white transition-colors"
+              >
+                <Facebook className="w-5 h-5 text-accent" />
+                DB Removals on Facebook
+              </a>
             </div>
             
             <div>
               <h3 className="font-semibold text-lg mb-6">Our Services</h3>
               <ul className="space-y-3 text-sm text-primary-foreground/70">
                 <li><Link href="/services" className="hover:text-white transition-colors">House Removals</Link></li>
-                <li><Link href="/services" className="hover:text-white transition-colors">Furniture Moving</Link></li>
                 <li><Link href="/services" className="hover:text-white transition-colors">House Clearances</Link></li>
-                <li><Link href="/services" className="hover:text-white transition-colors">Packing Services</Link></li>
-                <li><Link href="/services" className="hover:text-white transition-colors">Commercial Moves</Link></li>
-                <li><Link href="/services" className="hover:text-white transition-colors">Man & Van</Link></li>
+                <li><Link href="/services" className="hover:text-white transition-colors">Rubbish Removal</Link></li>
+                <li><Link href="/services" className="hover:text-white transition-colors">Scrap Metal Collection</Link></li>
+                <li><Link href="/services" className="hover:text-white transition-colors">Garden Clearance &amp; Lawn Care</Link></li>
+                <li><Link href="/services" className="hover:text-white transition-colors">Man &amp; Van</Link></li>
               </ul>
             </div>
 
@@ -142,8 +155,8 @@ export function PublicLayout({ children }: { children: ReactNode }) {
               <h3 className="font-semibold text-lg mb-6">Quick Links</h3>
               <ul className="space-y-3 text-sm text-primary-foreground/70">
                 <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-                <li><Link href="/quote" className="hover:text-white transition-colors">Get a Quote</Link></li>
-                <li><Link href="/gallery" className="hover:text-white transition-colors">Gallery</Link></li>
+                <li><Link href="/quote" className="hover:text-white transition-colors">Get a Free Quote</Link></li>
+                <li><Link href="/gallery" className="hover:text-white transition-colors">Our Work</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
                 <li><Link href="/admin/login" className="hover:text-white transition-colors">Admin Login</Link></li>
               </ul>
@@ -154,25 +167,28 @@ export function PublicLayout({ children }: { children: ReactNode }) {
               <ul className="space-y-4 text-sm text-primary-foreground/70">
                 <li className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-accent shrink-0" />
-                  <span>0800 123 4567<br/><span className="text-xs opacity-70">Mon-Sat, 8am-6pm</span></span>
+                  <a href="tel:07711961375" className="hover:text-white transition-colors">
+                    07711 961 375<br /><span className="text-xs opacity-70">Call for a free quote</span>
+                  </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 text-accent shrink-0" />
-                  <span>hello@yourcompany.co.uk</span>
+                  <Facebook className="w-5 h-5 text-accent shrink-0" />
+                  <a href="https://www.facebook.com/DBRemovals" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    Message DB Removals<br /><span className="text-xs opacity-70">on Facebook</span>
+                  </a>
                 </li>
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-accent shrink-0" />
-                  <span>London & Surrounding Areas<br/><span className="text-xs opacity-70">UK Wide for select jobs</span></span>
+                  <span>Woolavington &amp; Surrounding Areas<br /><span className="text-xs opacity-70">Long &amp; short distance available</span></span>
                 </li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-primary-foreground/50">
-            <p>&copy; {new Date().getFullYear()} Your Company Name. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} DB Removals — DB &amp; Family Man and a Van. All rights reserved.</p>
             <div className="flex gap-4 mt-4 md:mt-0">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { PublicLayout } from "@/components/layout/PublicLayout";
-import { CheckCircle2, Truck, Package, Home as HomeIcon, Building, Clock } from "lucide-react";
+import { CheckCircle2, Truck, Package, Home as HomeIcon, Recycle, Leaf, Clock, ShoppingBag, Sofa, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
@@ -8,72 +8,84 @@ const services = [
     id: "house-removals",
     title: "House Removals",
     icon: HomeIcon,
-    description: "Our comprehensive house removal service takes the stress out of moving day. From 1-bedroom flats to 5-bedroom houses, our experienced team ensures your belongings arrive safely.",
+    description: "Moving home? We handle everything from a studio flat to a full family house. Long and short distance moves, same day service available. We do all the heavy lifting so you don't have to.",
     includes: [
+      "Long and short distance moves",
+      "Same day service available",
       "Full loading and unloading",
-      "Transit blankets and protective covers",
-      "Dismantling and reassembly of basic furniture",
-      "Goods in transit insurance"
-    ]
-  },
-  {
-    id: "furniture",
-    title: "Furniture Moving",
-    icon: Package,
-    description: "Got a heavy sofa, a delicate antique, or a grand piano? We specialise in moving single large items or partial loads securely and efficiently.",
-    includes: [
-      "Specialist moving equipment",
-      "Extra padding and strapping",
-      "Narrow staircase navigation",
-      "Door removal if necessary"
-    ]
-  },
-  {
-    id: "clearance",
-    title: "House Clearances",
-    icon: CheckCircle2,
-    description: "Respectful, efficient clearance of properties for probate, end of tenancy, or decluttering. We aim to recycle or donate as much as possible.",
-    includes: [
-      "Full property sweeping",
-      "Responsible waste disposal",
-      "Charity shop drop-offs",
-      "Confidential document shredding (arranged)"
-    ]
-  },
-  {
-    id: "packing",
-    title: "Packing Services",
-    icon: Package,
-    description: "Let our trained professionals pack your life into boxes. We bring all the materials and use proven techniques to ensure nothing breaks in transit.",
-    includes: [
-      "Premium double-walled boxes",
-      "Bubble wrap and packing paper",
-      "Wardrobe cartons for hanging clothes",
-      "Clearly labelled room-by-room"
-    ]
-  },
-  {
-    id: "commercial",
-    title: "Commercial Moves",
-    icon: Building,
-    description: "Minimise business downtime with our weekend or out-of-hours office relocation services. We manage IT equipment carefully and keep files organised.",
-    includes: [
-      "IT equipment crates",
-      "Sequential file packing",
-      "Weekend availability",
-      "Secure moving protocols"
+      "House, flat, and bungalow moves",
+      "Student and flat moves",
+      "Office and commercial relocations",
     ]
   },
   {
     id: "man-van",
     title: "Man & Van Service",
-    icon: Clock,
-    description: "Perfect for student moves, single items, or small flats. A flexible, cost-effective service with a professional driver to help you load and unload.",
+    icon: Truck,
+    description: "Need a hand moving a few items or collecting something? Our man and van service is flexible, fast, and affordable. Collection and delivery, storage pickups, single item moves — you name it.",
     includes: [
-      "Hourly or day rates",
-      "Working driver assists with lifting",
-      "Clean, modern Luton van",
-      "Same protective equipment used"
+      "Single item delivery",
+      "Collection and delivery",
+      "Storage pickups",
+      "Flat moves",
+      "Long and short distance",
+      "Handyman services available",
+    ]
+  },
+  {
+    id: "house-clearances",
+    title: "House &amp; Property Clearances",
+    icon: Package,
+    description: "Full or part clearances done quickly and respectfully. Whether you're clearing a family home, preparing a property for sale, or dealing with end of tenancy — we clear it all.",
+    includes: [
+      "Full or part house clearances",
+      "End of tenancy clearances",
+      "Probate and bereavement clearances",
+      "Loft clearances",
+      "Garage clearances",
+      "Responsible disposal and recycling",
+    ]
+  },
+  {
+    id: "rubbish-removal",
+    title: "Rubbish &amp; Waste Removal",
+    icon: ShoppingBag,
+    description: "Cheaper than hiring a skip — and we do all the heavy lifting for you. Affordable rubbish removal for homes, gardens, shops, and businesses. One fixed price once quoted.",
+    includes: [
+      "Garden waste removal",
+      "Shop and commercial clearances",
+      "General household rubbish",
+      "Furniture and white goods",
+      "Building and renovation waste",
+      "One fixed price, no hidden fees",
+    ]
+  },
+  {
+    id: "scrap-metal",
+    title: "Free Scrap Metal Collection",
+    icon: Recycle,
+    description: "We collect scrap metal for FREE. Got an old boiler, washing machine, car parts, or bicycles taking up space? We'll come and collect — completely free of charge.",
+    includes: [
+      "Old scrap batteries",
+      "Old scrap car parts and cars",
+      "Lawn mowers and bicycles",
+      "Old boilers and radiators",
+      "Washing machines and cookers",
+      "Dishwashers and aluminium — and more",
+    ]
+  },
+  {
+    id: "garden-lawn",
+    title: "Garden &amp; Lawn Care",
+    icon: Leaf,
+    description: "DB &amp; Family handle all your gardening needs under the Strim &amp; Trim Lawn Care banner. From a one-off garden clearance to regular lawn maintenance — we've got you covered.",
+    includes: [
+      "Fencing and fencing repairs",
+      "Turfing",
+      "Garden clearance and maintenance",
+      "Tree pruning and clearance",
+      "Patio cleaning",
+      "Regular lawn care available",
     ]
   }
 ];
@@ -85,8 +97,22 @@ export default function Services() {
         <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Our Services</h1>
           <p className="text-lg text-white/80 leading-relaxed">
-            Professional moving, packing, and clearance services designed to make your life easier. Fully insured, highly rated, and always reliable.
+            DB &amp; Family Man and a Van — covering removals, clearances, rubbish removal, free scrap metal collection, and garden services. Fully licensed, free quotes, and won't be beaten on price.
           </p>
+        </div>
+      </div>
+
+      {/* Key selling points */}
+      <div className="bg-accent py-6">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-3 text-white text-sm font-semibold">
+            <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> Free Quotes</span>
+            <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> Fully Licensed</span>
+            <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> Cheaper Than a Skip</span>
+            <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> One Fixed Price Once Quoted</span>
+            <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> Won't Be Beaten on Price</span>
+            <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> Same Day Available</span>
+          </div>
         </div>
       </div>
 
@@ -99,7 +125,7 @@ export default function Services() {
                   <div className="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center">
                     <service.icon className="w-8 h-8 text-primary" />
                   </div>
-                  <h2 className="text-2xl font-bold text-primary">{service.title}</h2>
+                  <h2 className="text-2xl font-bold text-primary" dangerouslySetInnerHTML={{ __html: service.title }} />
                 </div>
                 <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                   {service.description}
@@ -110,7 +136,7 @@ export default function Services() {
                     {service.includes.map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                        <span className="text-foreground/80">{item}</span>
+                        <span className="text-foreground/80" dangerouslySetInnerHTML={{ __html: item }} />
                       </li>
                     ))}
                   </ul>
@@ -122,11 +148,16 @@ export default function Services() {
           <div className="mt-20 text-center bg-white rounded-3xl p-12 border border-border shadow-sm">
             <h2 className="text-3xl font-bold text-primary mb-4">Not sure what you need?</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Every move is unique. Get in touch with us to discuss your specific requirements, and we'll tailor a package just for you.
+              Just give us a call or fill in our quote form — we'll give you a free, no-obligation price. One fixed price once quoted, and we won't be beaten on cost.
             </p>
-            <Button asChild size="xl" className="rounded-full px-10">
-              <Link href="/quote">Get a Custom Quote</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="xl" className="rounded-full px-10">
+                <Link href="/quote">Get a Free Quote</Link>
+              </Button>
+              <Button asChild variant="outline" size="xl" className="rounded-full px-10">
+                <a href="tel:07711961375">Call 07711 961 375</a>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
