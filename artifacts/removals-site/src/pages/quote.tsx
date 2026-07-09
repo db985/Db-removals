@@ -177,18 +177,18 @@ export default function Quote() {
                               defaultValue={field.value}
                               className="flex gap-4"
                             >
-                              <FormItem className="flex items-center space-x-2 space-y-0">
-                                <FormControl><RadioGroupItem value="phone" /></FormControl>
-                                <FormLabel className="font-normal cursor-pointer">Phone</FormLabel>
-                              </FormItem>
-                              <FormItem className="flex items-center space-x-2 space-y-0">
-                                <FormControl><RadioGroupItem value="email" /></FormControl>
-                                <FormLabel className="font-normal cursor-pointer">Email</FormLabel>
-                              </FormItem>
-                              <FormItem className="flex items-center space-x-2 space-y-0">
-                                <FormControl><RadioGroupItem value="either" /></FormControl>
-                                <FormLabel className="font-normal cursor-pointer">Either</FormLabel>
-                              </FormItem>
+                              <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="phone" id="contact-phone" />
+                                <label htmlFor="contact-phone" className="font-normal cursor-pointer text-sm">Phone</label>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="email" id="contact-email" />
+                                <label htmlFor="contact-email" className="font-normal cursor-pointer text-sm">Email</label>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="either" id="contact-either" />
+                                <label htmlFor="contact-either" className="font-normal cursor-pointer text-sm">Either</label>
+                              </div>
                             </RadioGroup>
                           </FormControl>
                           <FormMessage />
@@ -234,7 +234,7 @@ export default function Quote() {
                   />
 
                   <div className="space-y-3">
-                    <FormLabel>Attach a Photo (Optional)</FormLabel>
+                    <label className="text-sm font-medium leading-none">Attach a Photo (Optional)</label>
                     <p className="text-sm text-muted-foreground mb-2">If you have a particularly large item or difficult access, a photo helps us quote accurately.</p>
                     <div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:bg-gray-50 transition-colors cursor-pointer relative">
                       <input 
