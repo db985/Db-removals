@@ -104,9 +104,10 @@ router.post("/quotes", async (req, res) => {
     if (resendKey && notifyEmail) {
       try {
         const resend = new Resend(resendKey);
+        const toAddresses = notifyEmail.split(",").map((e) => e.trim()).filter(Boolean);
         await resend.emails.send({
           from: "DB Removals <onboarding@resend.dev>",
-          to: notifyEmail,
+          to: toAddresses,
           subject: `New Quote Request from ${name}`,
           html: `
             <h2>New Quote Request</h2>
