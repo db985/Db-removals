@@ -37,7 +37,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
         </div>
         <div className="flex items-center gap-2">
           <MapPin className="w-4 h-4 text-accent" />
-          <span>Woolavington &amp; Surrounding Areas</span>
+          <span>Serving the Whole of Somerset</span>
         </div>
       </div>
 
@@ -126,7 +126,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
                 <span className="font-bold text-xl tracking-tight">DB Removals</span>
               </div>
               <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6">
-                DB &amp; Family Man and a Van. Fully licensed, affordable, and reliable removals, clearances, and more across Woolavington and the surrounding areas.
+                DB &amp; Family Man and a Van. Fully licensed, affordable, and reliable removals, clearances, and more across the whole of Somerset.
               </p>
               <a
                 href="https://www.facebook.com/share/193veY3mhT/?mibextid=wwXIfr"
@@ -179,7 +179,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
                 </li>
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-accent shrink-0" />
-                  <span>Woolavington &amp; Surrounding Areas<br /><span className="text-xs opacity-70">Long &amp; short distance available</span></span>
+                  <span>Serving the Whole of Somerset<br /><span className="text-xs opacity-70">Long &amp; short distance available</span></span>
                 </li>
               </ul>
             </div>

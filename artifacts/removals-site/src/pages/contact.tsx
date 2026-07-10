@@ -69,7 +69,8 @@ export default function Contact() {
                   <div>
                     <h3 className="font-bold text-foreground">Service Area</h3>
                     <p className="text-muted-foreground mt-1 leading-relaxed">
-                      Based in Woolavington, Somerset.<br />
+                      Based in Woolavington.<br />
+                      Covering the whole of Somerset.<br />
                       Covering surrounding towns and villages.<br />
                       Long distance moves available.
                     </p>
@@ -130,7 +131,7 @@ export default function Contact() {
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#1a2744 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
         <div className="relative z-10 flex flex-col items-center text-center px-4">
           <MapPin className="w-12 h-12 text-primary mb-4" />
-          <h3 className="text-xl font-bold text-primary mb-2">Based in Woolavington, Somerset</h3>
+          <h3 className="text-xl font-bold text-primary mb-2">Serving the Whole of Somerset</h3>
           <p className="text-muted-foreground max-w-sm">Covering surrounding areas — long and short distance moves available across the UK.</p>
         </div>
       </div>

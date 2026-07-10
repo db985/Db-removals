@@ -63,7 +63,7 @@ export default function Gallery() {
           <div className="mt-16 text-center bg-white rounded-3xl p-12 border border-border shadow-sm max-w-2xl mx-auto">
             <h2 className="text-2xl font-bold text-primary mb-3">More photos coming soon</h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              We complete new jobs every week. Check back regularly to see more of our latest clearances, removals, and collections across Woolavington and the surrounding areas.
+              We complete new jobs every week. Check back regularly to see more of our latest clearances, removals, and collections across the whole of Somerset.
             </p>
             <Button asChild size="lg" className="rounded-full px-10">
               <Link href="/quote">Get a Free Quote <ArrowRight className="ml-2 w-4 h-4" /></Link>

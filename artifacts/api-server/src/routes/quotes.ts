@@ -105,7 +105,7 @@ router.post("/quotes", async (req, res) => {
       try {
         const resend = new Resend(resendKey);
         await resend.emails.send({
-          from: "quotes@yourdomain.com",
+          from: "DB Removals <onboarding@resend.dev>",
           to: notifyEmail,
           subject: `New Quote Request from ${name}`,
           html: `
