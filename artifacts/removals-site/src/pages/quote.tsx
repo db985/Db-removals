@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { PublicLayout } from "@/components/layout/PublicLayout";
-import { useCreateQuote } from "@workspace/api-client-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -9,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Loader2, CheckCircle, UploadCloud, ArrowRight } from "lucide-react";
+import { Loader2, CheckCircle, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const quoteSchema = z.object({
@@ -25,9 +24,7 @@ type QuoteFormValues = z.infer<typeof quoteSchema>;
 
 export default function Quote() {
   const { toast } = useToast();
-  const createQuote = useCreateQuote();
-  const [photoFile, setPhotoFile] = useState<File | null>(null);
-  const [isUploading, setIsUploading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const form = useForm<QuoteFormValues>({
@@ -43,44 +40,54 @@ export default function Quote() {
   });
 
   const onSubmit = async (data: QuoteFormValues) => {
+    setIsSubmitting(true);
     try {
-      let photoUrl = undefined;
+      // 1. Combine form fields into a custom message string for your backend
+      const consolidatedDetails = `
+Moving From Address: 
+${data.address}
 
-      if (photoFile) {
-        setIsUploading(true);
-        const formData = new FormData();
-        formData.append("file", photoFile);
+Preferred Contact Method: 
+${data.preferredContact}
 
-        const uploadRes = await fetch("/api/uploads/photo", {
-          method: "POST",
-          body: formData,
-        });
+Job Description & Inventory: 
+${data.jobDescription}
+      `.trim();
 
-        if (!uploadRes.ok) {
-          throw new Error("Failed to upload photo");
-        }
+      const payload = {
+        name: data.name,
+        email: data.email || 'No email provided',
+        phone: data.phone,
+        details: consolidatedDetails
+      };
 
-        const uploadData = await uploadRes.json();
-        photoUrl = uploadData.url;
-        setIsUploading(false);
-      }
-
-      await createQuote.mutateAsync({
-        data: {
-          ...data,
-          photoUrl,
+      // 2. Post the payload directly to your live Vercel API backend
+      const response = await fetch('https://vercel.app', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify(payload),
       });
 
-      setIsSuccess(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (error) {
-      setIsUploading(false);
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setIsSuccess(true);
+        form.reset(); // Wipe inputs clean
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error(result.error || "The server could not process your submission.");
+      }
+    } catch (error: any) {
+      console.error(error);
       toast({
         title: "Submission Failed",
-        description: "There was a problem submitting your quote. Please try again.",
+        description: error.message || "There was a problem submitting your quote. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -198,80 +205,28 @@ export default function Quote() {
                   </div>
                 </div>
 
-                {/* Job Details */}
+                {/* Move Details */}
                 <div className="space-y-6 pt-4">
                   <h3 className="text-xl font-bold text-primary border-b border-border pb-4">Move Details</h3>
-                  <FormField
-                    control={form.control}
-                    name="address"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Moving From (Current Address) *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="123 High St, London, SW1A 1AA" className="h-12 bg-gray-50/50" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="jobDescription"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Job Description *</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="Please tell us about your move: dates, moving to address, property type, number of bedrooms, or specific large items..." 
-                            className="min-h-[120px] bg-gray-50/50 resize-y" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <div className="space-y-3">
-                    <label className="text-sm font-medium leading-none">Attach a Photo (Optional)</label>
-                    <p className="text-sm text-muted-foreground mb-2">If you have a particularly large item or difficult access, a photo helps us quote accurately.</p>
-                    <div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:bg-gray-50 transition-colors cursor-pointer relative">
-                      <input 
-                        type="file" 
-                        accept="image/*" 
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                        onChange={(e) => setPhotoFile(e.target.files?.[0] || null)}
-                      />
-                      <UploadCloud className="w-8 h-8 text-primary mx-auto mb-2" />
-                      {photoFile ? (
-                        <span className="font-medium text-primary">{photoFile.name}</span>
-                      ) : (
-                        <span className="font-medium text-foreground">Click to upload or drag & drop</span>
+                  <div className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="address"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Moving From Address *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Current full address or postcode" className="h-12 bg-gray-50/50" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                       )}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-6">
-                  <Button 
-                    type="submit" 
-                    size="xl" 
-                    className="w-full h-16 text-lg font-bold rounded-xl shadow-lg"
-                    disabled={createQuote.isPending || isUploading}
-                  >
-                    {createQuote.isPending || isUploading ? (
-                      <><Loader2 className="w-6 h-6 mr-2 animate-spin" /> Submitting...</>
-                    ) : (
-                      <>Submit Request <ArrowRight className="w-6 h-6 ml-2" /></>
-                    )}
-                  </Button>
-                </div>
-              </form>
-            </Form>
-          </div>
-        </div>
-      </div>
-    </PublicLayout>
-  );
-}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="jobDescription"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Job Description & Inventory Details *</FormLabel>
+                          <FormControl>
+                            <Textarea 
