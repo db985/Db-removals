@@ -8,24 +8,23 @@ const app = express();
 // 1. Logger Setup
 app.use(pinoHttp());
 
-// 2. CORS Configuration (Allows your frontend to talk to this API)
+// 2. CORS Configuration (Tied specifically to your live DB Removals site)
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000', // Falls back to local dev
+  origin: 'https://db-removals-removals-site.vercel.app',
   methods: ['POST', 'GET'],
   credentials: true
 }));
 
-// 3. Body Parser (Crucial for receiving JSON form data from the frontend)
+// 3. Body Parser (Extracts the quote form fields)
 app.use(express.json());
 
 // 4. Health Check Route
 app.get('/', (req: Request, res: Response) => {
-  res.send('Backend API is running smoothly.');
+  res.send('DB Removals Backend API is active.');
 });
 
-// 5. Free Quote Form & Email Endpoint
+// 5. House Removals Free Quote Endpoint
 app.post('/api/quote', async (req: Request, res: Response): Promise<void> => {
-  // Extracting data sent by your frontend form
   const { name, email, phone, details } = req.body;
 
   // Basic validation check
@@ -34,35 +33,35 @@ app.post('/api/quote', async (req: Request, res: Response): Promise<void> => {
     return;
   }
 
-  // Configure your email transporter using secure environment variables
+  // Email delivery transporter setup
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS, // Your Gmail 16-character App Password
+      user: 'bevissmason999@gmail.com',
+      pass: process.env.EMAIL_PASS, // DO NOT hardcode this password. Keep it secure in Vercel settings.
     },
   });
 
-  // Construct the email content
+  // Layout of the automated email sent to your inbox
   const emailContent = `
-    You have received a new Free Quote Request!
+    🏡 New House Removals Quote Request!
     
     --------------------------------------------
-    Name:    ${name}
-    Email:   ${email}
-    Phone:   ${phone || 'Not provided'}
+    Customer Name:  ${name}
+    Email Address:  ${email}
+    Phone Number:   ${phone || 'Not provided'}
     
-    Message / Details:
+    Removal Details / Job Requirements:
     ${details}
     --------------------------------------------
   `;
 
   try {
-    // Send the email to yourself
+    // Deliver the email directly to your inbox
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_RECEIVER || process.env.EMAIL_USER, // Sends to you
-      subject: `🚨 New Quote Request from ${name}`,
+      from: 'bevissmason999@gmail.com',
+      to: 'bevissmason999@gmail.com',
+      subject: `🚚 New Quote Request from ${name}`,
       text: emailContent,
     });
 
@@ -73,8 +72,17 @@ app.post('/api/quote', async (req: Request, res: Response): Promise<void> => {
   }
 });
 
-// 6. Export the app for src/index.ts to consume
+// 6. Export the app for src/index.ts
 export default app;
 
-pnpm add nodemailer cors
-pnpm add -D @types/nodemailer @types/cors
+# 1. Install required email and CORS libraries along with their TypeScript definitions
+pnpm add nodemailer cors && pnpm add -D @types/nodemailer @types/cors
+
+# 2. Stage your updated files
+git add src/app.ts package.json pnpm-lock.yaml
+
+# 3. Commit the updates safely to your repository
+git commit -m "feat: integrate cors for db-removals and setup nodemailer quote routing"
+
+# 4. Push directly to GitHub to trigger your automatic Vercel backend deployment
+git push origin main
